@@ -42,13 +42,17 @@ func (f *PluginExample) BuildAnalyzers() ([]*analysis.Analyzer, error) {
 	return []*analysis.Analyzer{
 		{
 			Name: "todo",
-			Doc:  "finds todos without author",
+			Doc:  "find todos without an author",
 			Run:  f.run,
 		},
 	}, nil
 }
 
 func (f *PluginExample) GetLoadMode() string {
+	// NOTE: the mode can be `register.LoadModeSyntax` or `register.LoadModeTypesInfo`.
+	// - `register.LoadModeSyntax`: if the linter doesn't use types information.
+	// - `register.LoadModeTypesInfo`: if the linter uses types information.
+
 	return register.LoadModeSyntax
 }
 
