@@ -52,7 +52,7 @@ func (f *PluginExample) GetLoadMode() string {
 	return register.LoadModeSyntax
 }
 
-func (f *PluginExample) run(pass *analysis.Pass) (interface{}, error) {
+func (f *PluginExample) run(pass *analysis.Pass) (any, error) {
 	for _, file := range pass.Files {
 		ast.Inspect(file, func(n ast.Node) bool {
 			if comment, ok := n.(*ast.Comment); ok {
